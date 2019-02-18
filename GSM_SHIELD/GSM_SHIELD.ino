@@ -38,9 +38,7 @@ void loop() {
       }else if(command.equals("cls")){
         clear_sim();
       }
-    
   }
-
   ShowSerialData();
 }
 
@@ -90,58 +88,10 @@ void SubmitHttpData(){
 }
 
 void GetHttpData(){
-/*
-  gsm.println("AT+CSAPBR=3,1,\"Contype\",\"GPRS\"");
-  ShowSerialData();
-  delay(5000);
-  
-  gsm.println("AT+CSAPBR=3,1,\"APN\",\"browse\""); //need to put your provider's APN here
-  ShowSerialData();
-  delay(5000);
-  
-  gsm.println("AT+CSAPBR=1,1");
-  ShowSerialData();
-  delay(5000);
-  
-  gsm.println("AT+CHTTPINIT");
-  ShowSerialData();
-  delay(5000);
-  
-  gsm.println("AT+CHTTPPARA=\"CID\",1");
-  ShowSerialData();
-  delay(5000);
-  
-  gsm.println("AT+CHTTPPARA=\"URL\",\"api.thingspeak.com\""); //web address to send data to
-  ShowSerialData();
-  delay(5000);
-  
-  gsm.println("AT+CHTTPDATA=100,10000"); //100 refers to how many bytes you're sending.  You'll probably have to tweak or just put a large #
-  delay(5000);
-  
-  gsm.println("/apps/thinghttp/send_request?api_key=71QFQ61B302G21TY"); //ie latitude,longitude,etc...
-  ShowSerialData();
-  delay(5000);
-  
-  gsm.println("AT+CHTTPACTION=1"); //POST the data
-  ShowSerialData();
-  delay(5000);
-  
-  gsm.println("AT+CHTTPTERM"); //terminate http
-  ShowSerialData();
-  delay(5000);
-  
-  gsm.println("AT+CSAPBR=0,1");// Disconnect GPRS
-  ShowSerialData();
-  delay(5000);
-  */
-  //gsm.println("AT+CREG?");
-  //ShowSerialData();
   delay(5000);
   gsm.println("AT+CGATT=1");
   ShowSerialData();
   delay(1000);
-  //gsm.println("AT+AGPS=0");
-  //delay(2000);
   gsm.println("AT+CGDCONT=1,\"IP\",browse\"\"");
   ShowSerialData();
   delay(2000);
@@ -149,31 +99,19 @@ void GetHttpData(){
   delay(1000);
   ShowSerialData();
   gsm.println("AT+CIPSTART=\"TCP\",\"api.thingspeak.com\",80");
-
   delay(5000);
   ShowSerialData();
-
   gsm.println("AT+CIPSEND");
-  //ShowSerialData();
   delay(2000);
-  //gsm.print("GET /apps/thinghttp/send_request?api_key=71QFQ61B302G21TY HTTP/1.1\r\nHost:api.thingspeak.com\r\n");
-  //gsm.print("GET https://api.thingspeak.com/apps/thinghttp/send_request?api_key=71QFQ61B302G21TY HTTP/1.1");
-  //gsm.print("GET api.thingspeak.com/apps/thinghttp/send_request?api_key=71QFQ61B302G21TY HTTP/1.1");
-  //gsm.print("GET /2vJtCLh HTTP/1.1\r\nHost:bit.ly\r\n");
-  //gsm.print("GET /2vJtCLh HTTP/1.1");
-  //gsm.print("GET bit.ly/2vJtCLh HTTP/1.1\r\n");
   gsm.print(String("GET ") + url + " HTTP/1.1\r\n" +
                "Host: " + host + "\r\n" + 
                "Connection: close\r\n\r\n");
   delay(2000);
-  //ShowSerialData();
   gsm.print(char(26));//the ASCII code of the ctrl+z is 26
-  //delay(10000);
   ShowSerialData();
-//https://bit.ly/2vJtCLh
 }
 
 void GetSignalQuality(){
    gsm.println("AT+CSQ");
-   Serial.println("Tips:+CSQ: XX,QQ : It means the Signal Quality poor when the XX is '99'!");
+   Serial.println("+CSQ: XX,QQ : Signal Quality is poor when the XX is \"99\"");
 }
