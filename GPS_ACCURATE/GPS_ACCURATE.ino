@@ -1,7 +1,7 @@
 #include <TinyGPS++.h>
 #include <SoftwareSerial.h>
 
-static const int RXPin = 4, TXPin = 3;
+static const int RXPin = 10, TXPin = 11;
 static const uint32_t GPSBaud = 9600;
 
 TinyGPSPlus gps;
@@ -42,4 +42,3 @@ void displayInfo(){
   }
   delay(1000);
 }
-
