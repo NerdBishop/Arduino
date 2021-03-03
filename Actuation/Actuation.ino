@@ -35,13 +35,13 @@ int readBase64(const void *buf, int len)
     int encLen = base64_enc_len(len);
     char* h = (char*) malloc(encLen);
     base64_decode(h, buf, len); 
-    Serial.print(h);
+    Serial.println(h);
     String hc = String(h);
     
     if(hc.equals("true")){
-      Serial.println("SOMTIN WAS TURNED ON");
+      Serial.print("SOMTIN WAS TURNED ON");
     }else if(hc.equals("false")){
-      Serial.println("SOMTIN WAS TURNED OFF");
+      Serial.print("SOMTIN WAS TURNED OFF");
     }
     
     free(h);
