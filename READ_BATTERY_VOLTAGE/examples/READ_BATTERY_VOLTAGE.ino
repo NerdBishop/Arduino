@@ -10,9 +10,10 @@
 
 #include <Vcc.h>
 
+//MORE DECIMAL PLACES LEAD TO MUCH ACCURATE BATTERY READING(thus for VccMax and VccCorrection)
 const float VccMin   = 0.0;           // Minimum expected Vcc level, in Volts.
-const float VccMax   = 3.303;         // Maximum expected Vcc level, in Volts(Use a multimeter to measure the maximum output voltage of your regulator. The more decimal places the better).
-const float VccCorrection = 0.98544;  // Tweak this value
+const float VccMax   = 3.303;         // Maximum expected Vcc level, in Volts(Use a multimeter to measure the maximum output voltage of your regulator. Thus when you connect a fully charged battery to it).
+const float VccCorrection = 0.98544;  // Tweak this value until the output of "v" on line 38 is the same as what you measured with your multimeter above for VccMax
 
 Vcc vcc(VccCorrection);
 
