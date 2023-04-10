@@ -24,7 +24,7 @@ Vcc vcc(VccCorrection);
 int batt_pin = A0;
 
 void setup() {
-  Serial.begin(115200);
+  Serial.begin(9600);
 }
 
 void loop() {
@@ -40,12 +40,12 @@ void loop() {
   //FIND AVERAGE OF 100 VCC VOLTAGE SAMPLES
   v = v / j;
 
-  //READ CURRENT REGULATOR OUTPUT PERCENTAGE (VccMin - VccMax)
-  //float p = vcc.Read_Perc(VccMin, VccMax);
-  //Serial.print("VCC = ");
-  //Serial.print(p);
-  //Serial.println(" %");
+  //PRINTING AVERAGE OF 100 VCC VOLTAGE SAMPLES TO 3 DECIMAL PLACES
+  Serial.println();
+  Serial.print("VCC: ");
+  Serial.println(v, 3);
 
+  
   //COLLECT 100 BATTERY VOLTAGE SAMPLES
   int i;
   float batt_volt = 0;
@@ -64,4 +64,6 @@ void loop() {
   //CONVERTING BATTERY VOLTAGE TO PERCENTAGE ASSUMING 4.19V AS THE FULL CHARGE VALUE
   Serial.print(((batt_volt - lowBat )/ (fullBat - lowBat)) * 100);
   Serial.println("%");
+
+  delay(100);
 }
