@@ -15,6 +15,9 @@ const float VccMin   = 0.0;           // Minimum expected Vcc level, in Volts.
 const float VccMax   = 3.303;         // Maximum expected Vcc level, in Volts(Use a multimeter to measure the maximum output voltage of your regulator. Thus when you connect a fully charged battery to it).
 const float VccCorrection = 0.98544;  // Tweak this value until the output of "v" on line 38 is the same as what you measured with your multimeter above for VccMax
 
+const float lowBat = 2.9; //Indicate the value your battery manufacturer states as absolutely dead battery
+const float fullBat = 4.2; //Indicate the value your fully charged battery will be at
+
 Vcc vcc(VccCorrection);
 
 //BATTERY IS CONNECTED TO A0
@@ -59,6 +62,6 @@ void loop() {
   Serial.print(batt_volt, 2);
   Serial.print("V ");
   //CONVERTING BATTERY VOLTAGE TO PERCENTAGE ASSUMING 4.19V AS THE FULL CHARGE VALUE
-  Serial.print((batt_volt / 4.19) * 100);
+  Serial.print(((batt_volt - lowBat )/ (fullBat - lowBat)) * 100);
   Serial.println("%");
 }
