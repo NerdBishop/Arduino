@@ -4,7 +4,7 @@
 
 const int mosfet1 = 6;
 const int mosfet2 = 7;
-const int onboard_LED = 8
+const int onboard_LED = 8;
 
 void setup() {
     pinMode(mosfet1, OUTPUT);
