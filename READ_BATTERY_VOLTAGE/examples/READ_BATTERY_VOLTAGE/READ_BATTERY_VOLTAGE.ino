@@ -1,4 +1,5 @@
 ////////////////////////////////////////////////
+//
 //This code was inspired by:
 //https://github.com/Yveaux/Arduino_Vcc
 //I made a few modifications to read out the volatage of batteries attached to the arduino.
@@ -6,6 +7,7 @@
 //NOTE: 1. Always make sure both R1 & R2 resistors have the same ohm values(even if you use resistor values of your choice)
 //      2. Add the Vcc.h and Vcc.cpp files to your Arduino libraries folder before uploading
 //visit https://www.youtube.com/delali to learn more about electronics and building smart things from scratch
+//
 ////////////////////////////////////////////////
 
 #include <Vcc.h>
